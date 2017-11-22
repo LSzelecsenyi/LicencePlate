@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/licenceplates/search}">
+        <input type="text" name="q"/>
+        <button type="submit" value="Submit">Search</button>
+    </form>
+    <div th:if="${warnMessage} != null">
+        <p th:text="${warnMessage}"></p>
+    </div>
+    <!--<form th:action="@{/licenceplates/search}">
+        <input type="hidden" name="q" th:value="diplomat"/>
+        <button type="submit" value="Submit">Search DT</button>
+    </form>
+    <form th:action="@{/licenceplates/search}">
+        <input type="hidden" name="q" th:value="police"/>
+        <button type="submit" value="Submit">Search Police</button>
+    </form>-->
+    <a th:href="@{/licenceplates/index}" th:text="'show all cars'"></a>
+    <a th:href="@{/licenceplates/search(q=police)}" th:text="'police cars only'"></a>
+    <a th:href="@{/licenceplates/search(q=diplomat)}" th:text="'diplomats only'"></a>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr align="left">
+            <th width="40px">Platenumber</th>
+            <th width="40px">Brand</th>
+            <th width="120px">Model</th>
+            <th width="70px">Color</th>
+            <th width="40px">Year</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${list}">
+            <td th:text="${car.plate}"></td>
+            <td>
+                <a th:href="@{/licenceplates/search/{brand}/(brand=${car.carBrand})}" th:text="${car.carBrand}"></a>
+            </td>
+            <td th:text="${car.carModel}"></td>
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.year}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
