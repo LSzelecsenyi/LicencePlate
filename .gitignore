@@ -1,25 +1,17 @@
+.class
+.idea/**/gradle.xml
+.idea/**/libraries
 .gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+.idea/
+out
+*.xml
 *.iml
-*.ipr
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+<<<<<<< HEAD
+.gf.json
+=======
+.gf.json
+>>>>>>> 24b2d638a2df379b07a4ab01e808b84153fc2f83
