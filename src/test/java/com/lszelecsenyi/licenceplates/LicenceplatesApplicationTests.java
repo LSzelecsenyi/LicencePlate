@@ -45,63 +45,10 @@ public class LicenceplatesApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
-//	@Test
-//	public void successfulMessageReceiving() throws Exception {
-//		JSONObject message = new JSONObject();
-//
-//		message.put("id", new Integer(7655482));
-//		message.put("username", "EggDice");
-//		message.put("text", "How you doin'?");
-//		message.put("timestamp", Long.valueOf("1322018752992"));
-//
-//		JSONObject client = new JSONObject();
-//
-//		client.put("id", "EggDice");
-//
-//		JSONObject wrapper = new JSONObject();
-//		wrapper.put("message", message);
-//		wrapper.put("client", client);
-//
-//		mockMvc.perform(post("/api/message/receive")
-//				.contentType(MediaType.APPLICATION_JSON)
-//				.content(wrapper.toString()))
-//				.andExpect(status().isOk());
-//	}
-
-//	@Test
-//    public void testGet() throws Exception {
-//        JSONObject response = new JSONObject();
-//
-//        response.put("result", "ok");
-//        response.put("data", new Iterable<>() {
-//        })
-//
-//        JSONObject licenceplate = new JSONObject();
-//
-//        licenceplate.put("plate", "UWO-352");
-//        licenceplate.put("carBrand", "Kia");
-//        licenceplate.put("carModel", "Sedona");
-//        licenceplate.put("color", "Pink");
-//        licenceplate.put("year", "2010");
-//
-//    }
+	
 
     @Test
-    public void testLPBrand() throws Exception {
-        this.mockMvc.perform(get("api/search")
-                .param("brand", "kia")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(jsonPath("$.response.result").value("ok"))
-                .andExpect(jsonPath("$.response.data.plate").value("UWO-352"))
-                .andExpect(jsonPath("$.response.data.carBrand").value("Kia"))
-                .andExpect(jsonPath("$.response.data.carModel").value("Sedona"))
-                .andExpect(jsonPath("$.response.data.color").value("Pink"))
-                .andExpect(jsonPath("$.response.data.year").value("2010"));
-    }
-
-    @Test
-    public void grootTestWithMessage() throws Exception {
+    public void LPTest() throws Exception {
         mockMvc.perform(get("/api/search?brand=kia"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
