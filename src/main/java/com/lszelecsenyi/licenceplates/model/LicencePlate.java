@@ -7,8 +7,6 @@ import javax.persistence.*;
 public class LicencePlate {
 
 
-//    @GeneratedValue(strategy= GenerationType.AUTO)
-//    private Long id;
     @Id
     private String plate;
     private String carBrand;

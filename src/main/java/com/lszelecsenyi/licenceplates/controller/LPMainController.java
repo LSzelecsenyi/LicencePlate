@@ -1,15 +1,13 @@
 package com.lszelecsenyi.licenceplates.controller;
 
 import com.lszelecsenyi.licenceplates.model.LicencePlate;
+import com.lszelecsenyi.licenceplates.model.Response;
 import com.lszelecsenyi.licenceplates.repo.LicencePlateRepo;
 import com.lszelecsenyi.licenceplates.service.PlateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -90,6 +88,17 @@ public class LPMainController {
         model.addAttribute("list", licencePlateRepo.findAllByCarBrand(brand));
         return "search";
     }
+
+//    @GetMapping("/search")
+//    @ResponseBody
+//    public Object getByBrand(@RequestParam(value = "brand", required = false) String brand) {
+//        if (brand != null) {
+//            Iterable listByBrand = licencePlateRepo.findAllByCarBrand(brand);
+//            return new Response(listByBrand);
+//        } else if (brand == null) {
+//            return new Response("something went wrong dumbass");
+//        } else return new Response("baaad, bad request");
+//    }
 
 
 }

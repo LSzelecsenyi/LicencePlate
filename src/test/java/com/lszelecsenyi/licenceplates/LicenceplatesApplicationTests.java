@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.nio.charset.Charset;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -53,11 +54,12 @@ public class LicenceplatesApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.result", is("ok")))
-                .andExpect(jsonPath("$.data.plate", is("UWO-352")));
-//                .andExpect(jsonPath("$.data.carBrand", is("Kia")))
-//                .andExpect(jsonPath("$.data.carModel", is("Sedona")))
-//                .andExpect(jsonPath("$.data.color", is("Pink")))
-//                .andExpect(jsonPath("$.data.year", is("2010")))
+                .andExpect(jsonPath("$.data[0].plate", is("UWO-352")))
+                .andExpect(jsonPath("$.data[0].carBrand", is("Kia")))
+                .andExpect(jsonPath("$.data[0].carModel", is("Sedona")))
+                .andExpect(jsonPath("$.data[0].year", is("2010")))
+                .andExpect(jsonPath("$.data[0].color", is("Pink")))
+                .andExpect(jsonPath("$.data", hasSize(1)));
     }
 
 }
